@@ -3,7 +3,7 @@ resource "random_id" "random" {
 }
 
 resource "aws_s3_bucket" "backend" {
-  bucket        = "terraform-s3-backend-s9"
+  bucket        = "terraform-s3-backend-s9" # s3 used for backend already created
   force_destroy = false
 }
 
