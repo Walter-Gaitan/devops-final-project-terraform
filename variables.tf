@@ -37,3 +37,9 @@ variable "instance_count" {
   type        = map(number)
   description = "Number of instances to create"
 }
+
+variable "naming_prefix" {
+  type        = string
+  description = "Naming prefix for resources"
+  default     = "mern-stack"
+}

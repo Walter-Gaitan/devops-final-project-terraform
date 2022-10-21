@@ -4,7 +4,7 @@
 # Create IAM role for EKS Node Group
 resource "aws_iam_role" "nodes_general" {
   # The name of the role
-  name = "eks-node-group-general"
+  name = "${local.name_prefix}-eks-node"
 
   # The policy that grants an entity permission to assume the role.
   assume_role_policy = <<POLICY
@@ -61,7 +61,7 @@ resource "aws_eks_node_group" "nodes_general" {
   cluster_name = aws_eks_cluster.eks.name
 
   # Name of the EKS Node Group.
-  node_group_name = "nodes-general"
+  node_group_name = "${local.name_prefix}-nodes-general"
 
   # Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
   node_role_arn = aws_iam_role.nodes_general.arn
@@ -106,9 +106,6 @@ resource "aws_eks_node_group" "nodes_general" {
   labels = {
     role = "nodes-general"
   }
-
-  # Kubernetes version
-  version = "1.18"
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.
