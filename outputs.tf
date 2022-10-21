@@ -9,3 +9,13 @@ output "eks_cluster_name" {
   description = "EKS Cluster Name"
   sensitive   = false
 }
+
+output "eks_cluster_endpoint" {
+  value       = aws_eks_cluster.eks.endpoint
+  description = "EKS Cluster Endpoint"
+  sensitive   = false
+}
+
+output "s3_bucket_name" {
+  value = aws_s3_bucket.backend.id
+}

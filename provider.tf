@@ -15,11 +15,11 @@ terraform {
       version = "~> 3.0"
     }
   }
+
   backend "s3" {
-    bucket = "terraform-s3-backend-s9"
+    bucket = var.bucket_name
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
-
 }
 

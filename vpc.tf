@@ -1,5 +1,5 @@
 resource "aws_vpc" "vpc" {
-  cidr_block = "10.0.0.0/16" # AWS VPC CIDR block
+  cidr_block = var.vpc_cidr_block[terraform.workspace] # AWS VPC CIDR block
 
   instance_tenancy = "default"
 

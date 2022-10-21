@@ -1,9 +1,9 @@
-resource "random_id" "random" {
-  byte_length = 1
+resource "random_pet" "random" {
+  length = 1
 }
 
 resource "aws_s3_bucket" "backend" {
-  bucket        = "terraform-s3-backend-s9" # s3 used for backend already created
+  bucket_name        = local.s3_bucket_name
   force_destroy = false
 }
 
