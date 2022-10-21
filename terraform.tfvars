@@ -17,20 +17,20 @@ instance_count = {
 }
 
 public_1 = {
-  Development  = "10.0.0.0/19"
-  Production = "10.2.0.0/19"
-    UAT         = "10.1.0.0/19"
+  Development = "10.0.0.0/19"
+  Production  = "10.2.0.0/19"
+  UAT         = "10.1.0.0/19"
 }
 
 public_2 = {
-  Development  = "10.0.32.0/19"
-  Production = "10.2.32.0/19"
+  Development = "10.0.32.0/19"
+  Production  = "10.2.32.0/19"
   UAT         = "10.1.32.0/19"
 }
 
 private_1 = {
-  Development  = "10.0.64.0/19"
-  Production = "10.2.64.0/19"
+  Development = "10.0.64.0/19"
+  Production  = "10.2.64.0/19"
   UAT         = "10.1.64.0/19"
 }
 

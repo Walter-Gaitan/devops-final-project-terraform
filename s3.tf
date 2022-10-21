@@ -3,7 +3,7 @@ resource "random_pet" "random" {
 }
 
 resource "aws_s3_bucket" "backend" {
-  bucket_name        = local.s3_bucket_name
+  bucket        = "terraform-state-${random_pet.random.id}"
   force_destroy = false
 }
 
