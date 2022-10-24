@@ -16,7 +16,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "terraform-state-coral"
+    bucket = "terraform-state-coral" # Add name of your bucket
     region = "us-east-1"
     key    = "terraform.tfstate"
   }

@@ -6,8 +6,8 @@ resource "aws_subnet" "public-1" {
 
   tags = {
     Name                        = "public-us-east-1a"
-    "kubernetes.io/cluster/eks" = "owned"
-    "kubernetes.io/role/elb"    = "1"
+    "kubernetes.io/cluster/${local.name_prefix}-eks" = "shared"
+    "kubernetes.io/role/elb"    = 1
   }
 }
 
@@ -19,8 +19,8 @@ resource "aws_subnet" "public-2" {
 
   tags = {
     Name                        = "public-us-east-1b"
-    "kubernetes.io/cluster/eks" = "owned"
-    "kubernetes.io/role/elb"    = "1"
+    "kubernetes.io/cluster/${local.name_prefix}-eks" = "shared"
+    "kubernetes.io/role/elb"    = 1
   }
 }
 
@@ -28,11 +28,10 @@ resource "aws_subnet" "private-1" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.private_1[terraform.workspace]
   availability_zone = "us-east-1a"
-
   tags = {
     Name                              = "private-us-east-1a"
-    "kubernetes.io/cluster/eks"       = "owned"
-    "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/${local.name_prefix}-eks"       = "shared"
+    "kubernetes.io/role/internal-elb" = 1
   }
 }
 
@@ -43,7 +42,7 @@ resource "aws_subnet" "private-2" {
 
   tags = {
     Name                              = "private-us-east-1b"
-    "kubernetes.io/cluster/eks"       = "owned"
-    "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/${local.name_prefix}-eks"       = "shared"
+    "kubernetes.io/role/internal-elb" = 1
   }
 }

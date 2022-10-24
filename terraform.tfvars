@@ -5,9 +5,9 @@ vpc_cidr_block = {
 }
 
 instance_type = {
-  dev = "t3.small"
-  prod  = "t3.small"
-  stg         = "t3.small"
+  dev = "t2.micro"
+  prod  = "t2.micro"
+  stg         = "t2.micro"
 }
 
 instance_count = {
