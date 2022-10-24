@@ -15,7 +15,3 @@ output "eks_cluster_endpoint" {
   description = "EKS Cluster Endpoint"
   sensitive   = false
 }
-
-output "s3_bucket_name" {
-  value = aws_s3_bucket.backend.id
-}
