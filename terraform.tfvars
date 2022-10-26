@@ -5,9 +5,9 @@ vpc_cidr_block = {
 }
 
 instance_type = {
-  dev = "t2.micro"
-  prod  = "t2.micro"
-  stg         = "t2.micro"
+  dev = "t3.small"
+  prod  = "t3.small"
+  stg         = "t3.small"
 }
 
 instance_count = {
@@ -38,4 +38,10 @@ private_2 = {
   dev = "10.0.96.0/19"
   prod  = "10.2.96.0/19"
   stg         = "10.1.96.0/19"
+}
+
+desired_state = {
+  "dev" = 1
+  "prod"  = 1
+  "stg"         = 1
 }

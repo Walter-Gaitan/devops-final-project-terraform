@@ -3,7 +3,7 @@
 
 resource "aws_iam_role" "eks_cluster" {
   # The name of the role
-  name = "eks-cluster"  
+  name = "eks-cluster"
 
   # The policy that grants an entity permission to assume the role.
   # Used to access AWS resources that you might not normally have access to.
@@ -41,7 +41,7 @@ resource "aws_iam_role_policy_attachment" "amazon_eks_cluster_policy" {
 
 resource "aws_eks_cluster" "eks" {
   # Name of the cluster.
-  name = "${local.name_prefix}-eks"
+  name = "eks"
 
   # The Amazon Resource Name (ARN) of the IAM role that provides permissions for 
   # the Kubernetes control plane to make calls to AWS API operations on your behalf

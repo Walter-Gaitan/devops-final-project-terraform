@@ -43,3 +43,8 @@ variable "naming_prefix" {
   description = "Naming prefix for resources"
   default     = "mern-stack"
 }
+
+variable "desired_state" {
+  type = map(number)
+  description = "value for desired_state"
+}
