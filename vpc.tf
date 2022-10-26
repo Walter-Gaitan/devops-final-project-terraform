@@ -15,7 +15,7 @@ resource "aws_vpc" "vpc" {
   assign_generated_ipv6_cidr_block = false
 
   tags = {
-    Name = "mern-stack"
+    Name = "${local.name_prefix}-mern-stack"
   }
 }
 

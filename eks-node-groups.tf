@@ -4,7 +4,7 @@
 # Create IAM role for EKS Node Group
 resource "aws_iam_role" "nodes_general" {
   # The name of the role
-  name = "${local.name_prefix}-eks-node"
+  name = "eks-node-group-general"
 
   # The policy that grants an entity permission to assume the role.
   assume_role_policy = <<POLICY
@@ -15,7 +15,7 @@ resource "aws_iam_role" "nodes_general" {
       "Effect": "Allow",
       "Principal": {
         "Service": "ec2.amazonaws.com"
-      },
+      }, 
       "Action": "sts:AssumeRole"
     }
   ]
@@ -61,17 +61,17 @@ resource "aws_eks_node_group" "nodes_general" {
   cluster_name = aws_eks_cluster.eks.name
 
   # Name of the EKS Node Group.
-  node_group_name = "${local.name_prefix}-nodes-general"
+  node_group_name = "nodes-general"
 
   # Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
   node_role_arn = aws_iam_role.nodes_general.arn
 
-  # Identifiers of EC2 Subnets to associate with the EKS Node Group.
-  # These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER_NAME
+  # Identifiers of EC2 Subnets to associate with the EKS Node Group. 
+  # These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER_NAME 
   # (where CLUSTER_NAME is replaced with the name of the EKS Cluster).
   subnet_ids = [
-    aws_subnet.private-1.id,
-    aws_subnet.private-2.id
+    aws_subnet.private_1.id,
+    aws_subnet.private_2.id
   ]
 
   # Configuration block with scaling settings
@@ -90,9 +90,9 @@ resource "aws_eks_node_group" "nodes_general" {
   # Valid values: AL2_x86_64, AL2_x86_64_GPU, AL2_ARM_64
   ami_type = "AL2_x86_64"
 
-  # Type of capacity associated with the EKS Node Group.
+  # Type of capacity associated with the EKS Node Group. 
   # Valid values: ON_DEMAND, SPOT
-  capacity_type = "SPOT"
+  capacity_type = "ON_DEMAND"
 
   # Disk size in GiB for worker nodes
   disk_size = 20
