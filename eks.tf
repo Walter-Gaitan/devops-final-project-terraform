@@ -3,7 +3,7 @@
 
 resource "aws_iam_role" "eks_cluster" {
   # The name of the role
-  name = "eks-cluster"
+  name = "${local.name_prefix}-eks-cluster"
 
   # The policy that grants an entity permission to assume the role.
   # Used to access AWS resources that you might not normally have access to.
@@ -41,14 +41,11 @@ resource "aws_iam_role_policy_attachment" "amazon_eks_cluster_policy" {
 
 resource "aws_eks_cluster" "eks" {
   # Name of the cluster.
-  name = "eks"
+  name = "${local.name_prefix}-eks"
 
-  # The Amazon Resource Name (ARN) of the IAM role that provides permissions for
+  # The Amazon Resource Name (ARN) of the IAM role that provides permissions for 
   # the Kubernetes control plane to make calls to AWS API operations on your behalf
   role_arn = aws_iam_role.eks_cluster.arn
-
-  # Desired Kubernetes master version
-  version = "1.18"
 
   vpc_config {
     # Indicates whether or not the Amazon EKS private API server endpoint is enabled
@@ -59,10 +56,10 @@ resource "aws_eks_cluster" "eks" {
 
     # Must be in at least two different availability zones
     subnet_ids = [
-      aws_subnet.public-1.id,
-      aws_subnet.public-2.id,
-      aws_subnet.private-1.id,
-      aws_subnet.private-2.id
+      aws_subnet.public_1.id,
+      aws_subnet.public_2.id,
+      aws_subnet.private_1.id,
+      aws_subnet.private_2.id
     ]
   }
 

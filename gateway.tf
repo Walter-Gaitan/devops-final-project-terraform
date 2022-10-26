@@ -1,7 +1,5 @@
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
-  tags = {
-    Name = "mern-stack"
-  }
+  tags = local.common_tags
 }

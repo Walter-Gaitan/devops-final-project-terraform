@@ -15,7 +15,7 @@ resource "aws_iam_role" "nodes_general" {
       "Effect": "Allow",
       "Principal": {
         "Service": "ec2.amazonaws.com"
-      },
+      }, 
       "Action": "sts:AssumeRole"
     }
   ]
@@ -66,31 +66,31 @@ resource "aws_eks_node_group" "nodes_general" {
   # Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
   node_role_arn = aws_iam_role.nodes_general.arn
 
-  # Identifiers of EC2 Subnets to associate with the EKS Node Group.
-  # These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER_NAME
+  # Identifiers of EC2 Subnets to associate with the EKS Node Group. 
+  # These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER_NAME 
   # (where CLUSTER_NAME is replaced with the name of the EKS Cluster).
   subnet_ids = [
-    aws_subnet.private-1.id,
-    aws_subnet.private-2.id
+    aws_subnet.private_1.id,
+    aws_subnet.private_2.id
   ]
 
   # Configuration block with scaling settings
   scaling_config {
     # Desired number of worker nodes.
-    desired_size = 1
+    desired_size = var.desired_size[terraform.workspace]
 
     # Maximum number of worker nodes.
-    max_size = 1
+    max_size = var.max_size[terraform.workspace]
 
     # Minimum number of worker nodes.
-    min_size = 1
+    min_size = var.min_size[terraform.workspace]
   }
 
   # Type of Amazon Machine Image (AMI) associated with the EKS Node Group.
   # Valid values: AL2_x86_64, AL2_x86_64_GPU, AL2_ARM_64
   ami_type = "AL2_x86_64"
 
-  # Type of capacity associated with the EKS Node Group.
+  # Type of capacity associated with the EKS Node Group. 
   # Valid values: ON_DEMAND, SPOT
   capacity_type = "SPOT"
 
@@ -101,14 +101,11 @@ resource "aws_eks_node_group" "nodes_general" {
   force_update_version = false
 
   # List of instance types associated with the EKS Node Group
-  instance_types = ["t3.small"]
+  instance_types = [var.instance_type[terraform.workspace]]
 
   labels = {
     role = "nodes-general"
   }
-
-  # Kubernetes version
-  version = "1.18"
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.

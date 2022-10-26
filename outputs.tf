@@ -9,3 +9,9 @@ output "eks_cluster_name" {
   description = "EKS Cluster Name"
   sensitive   = false
 }
+
+output "eks_cluster_endpoint" {
+  value       = aws_eks_cluster.eks.endpoint
+  description = "EKS Cluster Endpoint"
+  sensitive   = false
+}
