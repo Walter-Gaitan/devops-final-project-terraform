@@ -40,7 +40,19 @@ private_2 = {
   stg         = "10.1.96.0/19"
 }
 
-desired_state = {
+desired_size = {
+  "dev" = 1
+  "prod"  = 1
+  "stg"         = 1
+}
+
+max_size = {
+  "dev" = 1
+  "prod"  = 1
+  "stg"         = 1
+}
+
+min_size = {
   "dev" = 1
   "prod"  = 1
   "stg"         = 1
