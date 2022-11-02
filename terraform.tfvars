@@ -42,14 +42,14 @@ private_2 = {
 
 desired_size = {
   "dev" = 1
-  "prod"  = 1
+  "prod"  = 2
   "stg"         = 1
 }
 
 max_size = {
-  "dev" = 1
-  "prod"  = 1
-  "stg"         = 1
+  "dev" = 2
+  "prod"  = 3
+  "stg"         = 2
 }
 
 min_size = {
