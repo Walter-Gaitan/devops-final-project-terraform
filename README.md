@@ -5,7 +5,7 @@ This is a project for the AWS Program from Applaudo Studios.
 The goal of this project is to create a solution that includes a front-end, a back-end and a MongoDB databases running in an EKS Cluster.
 
 ## Description
-The solution consist of an infraestructure that includes a front-end, a back-end and a MongoDB database running in an EKS Cluster.
+The solution consist of an infraestructure built on terraform that has two availability zones, each one with a public and a private subnet. The public subnets have a NAT Gateway, the private subnets have an EKS Cluster with a Node Group and a MongoDB database. The application is deployed from an ECR repository.
 ![diagram](diagram.png)
 
 ## Deployment
@@ -15,8 +15,11 @@ The application is deployed in AWS using the following services:
 - Load Balancer
 - VPC
 - ECR
+- Route tables
+- Security Groups
 
-The ECR service and the MongoDB database are deployed manually using the AWS console.
+
+The ECR service is deployed using Github Actions from the repository where the application lives, and the MongoDB database is deployed manually using Atlas.
 
 ## How to run the infrastructure
 1. Clone the repository
@@ -33,28 +36,20 @@ terraform apply -auto-approve
 
 ## How to run the application
 
-The application used in this project is a React application, you can copy the code from the repository and run it locally using the following commands:
+You can copy the code from the repository and run it locally using the following command:
 ```
 git clone https://github.com/Walter-Gaitan/devops-final-project-app.git
 ```
 
-Once you have the code, you can run the following commands:
-```
-cd devops-final-project-app
-rm ~/.kube/config
-aws eks --region us-east-1 update-kubeconfig --name <cluster_name>
-kubectl apply -f k8s
-```
+You can learn more about how to use it in the documentation of the repository.
 
-Now you can access the application using the URL provided by the Load Balancer. You can get the URL by running the following command:
-```
-kubectl get svc
-```
+## How to run the MongoDB database
+
+You can [create a MongoDB database using Atlas](https://www.mongodb.com/basics/create-database) and connect it to the application.
 
 ## Destroy the infrastructure
 
-Before destroying the infrastructure, you need to delete the load balancers and kubeconfig file. You can do this by running the following commands:
+Before destroying the infrastructure, you need to delete the load balancers and kubeconfig file. Once you have done that, you can run the following command:
 ```
-kubectl delete -f k8s
-rm ~/.kube/config
+terraform destroy -auto-approve
 ```
