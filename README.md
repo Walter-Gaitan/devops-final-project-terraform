@@ -5,7 +5,8 @@ This is a project for the AWS Program from Applaudo Studios.
 The goal of this project is to create a solution that includes a front-end, a back-end and a MongoDB databases running in an EKS Cluster.
 
 ## Description
-The solution consist of an infraestructure that includes a front-end, a back-end and a MongoDB databases running in an EKS Cluster.
+The solution consist of an infraestructure that includes a front-end, a back-end and a MongoDB database running in an EKS Cluster.
+![diagram](diagram.png)
 
 ## Deployment
 The application is deployed in AWS using the following services:
