@@ -45,16 +45,16 @@ variable "naming_prefix" {
 }
 
 variable "desired_size" {
-  type = map(number)
+  type        = map(number)
   description = "value for desired_size"
 }
 
 variable "max_size" {
-  type = map(number)
+  type        = map(number)
   description = "value for max_size"
 }
 
 variable "min_size" {
-  type = map(number)
+  type        = map(number)
   description = "value for min_size"
 }
