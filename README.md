@@ -43,6 +43,8 @@ git clone https://github.com/Walter-Gaitan/devops-final-project-app.git
 
 You can learn more about how to use it in the documentation of the repository.
 
+During the presentation of this project, I will have a live demo of the application running in AWS, you can access it using the following link: [mernstack.waltergaitan.codes](http://mernstack.waltergaitan.codes/)
+
 ## How to run the MongoDB database
 
 You can [create a MongoDB database using Atlas](https://www.mongodb.com/basics/create-database) and connect it to the application.
