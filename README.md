@@ -10,6 +10,17 @@ The goal of this project is to create a solution that includes a front-end, a ba
 The solution consist of an infrastructure built on terraform that has two availability zones, each one with a public and a private subnet. The public subnets have a NAT Gateway, the private subnets have an EKS Cluster with a Node Group and a MongoDB database. The application is deployed from an ECR repository.
 ![diagram](diagram.png)
 
+### Estimated cost
+
+The estimated cost of this solution are divided as follows:
+
+| Name | Monthly Quantity | Unit | Monthly Cost |
+| ---- | ----------- | ------ | ------------ |
+| EKS cluster | 730 | hours | $73.00 |
+| NAT Gateway | 730 | hours | $32.85 |
+| NAT Gateway 2 | 730 | hours | $32.85 |
+| **Overall total** |  |  | $138.70 |
+
 ## Deployment
 
 The application is deployed in AWS using the following services:
