@@ -19,7 +19,8 @@ The estimated cost of this solution are divided as follows:
 | EKS cluster | 730 | hours | $73.00 |
 | NAT Gateway | 730 | hours | $32.85 |
 | NAT Gateway 2 | 730 | hours | $32.85 |
-| **Overall total** |  |  | $138.70 |
+| DNS Charges | 730 | hours | $6.00 |
+| **Overall total** |  |  | $144.70 |
 
 ## Deployment
 
