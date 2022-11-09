@@ -22,6 +22,8 @@ The estimated cost of this solution are divided as follows:
 | DNS Charges | 730 | hours | $6.00 |
 | **Overall total** |  |  | $144.70 |
 
+This costs may vary depending on the region and the amount of traffic.
+
 ## Deployment
 
 The application is deployed in AWS using the following services:
